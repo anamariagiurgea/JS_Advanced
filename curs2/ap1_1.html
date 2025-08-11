@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Shop {
+        constructor(nume, tip, orar, nrAngajati, adresa) {
+          console.log(" se apeleaza constructor");
+          this.nume = nume;
+          this.tip = tip;
+          this.orar = orar;
+          this.nrAngajati = nrAngajati;
+          this.adresa = adresa;
+        }
+        // set myNume(numeNou){
+        //     if(numeNou.lenght >= 3){
+        //         this.nume = numeNou;
+        //     }
+
+        // }
+        // get myNume(){
+        //     return this.nume;
+        // }
+
+        // set nume(numeNou) {
+        //   console.log(" se apeleaza setter");
+        //   if (numeNou.length >= 5) {
+        //     this._nume = numeNou;
+        //   }
+        // }
+        // get nume() {
+        //   return this._nume;
+        // }
+      }
+
+      let newShop = new Shop(
+        "CCC",
+        "Incaltaminte",
+        "8:00 - 22:00",
+        234,
+        "Bucuresti"
+      );
+
+      //   newShop.nume = "H&M";
+      //   newShop._nume = "Zara";
+      console.log("newShop :>> ", newShop);
+    </script>
+  </body>
+</html>
