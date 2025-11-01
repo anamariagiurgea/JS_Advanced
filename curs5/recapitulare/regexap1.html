@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Gasit doar numarul 17 in sirul:</h2>
+    <p id="sursa">Lorem  17 ipsum dolor 171 sit amet consectetur 2317 adipisicing elit. 
+        17 Distinctio sunt voluptatum 17 earum vel minus17 temporibus, officiis, 
+        delectus 17minima, exercitationem aperiam modi nobis! 17
+        Explicabo consequatur 1271 eius ab enim 4317 mollitia. Atque, 12173 laudantium!</p>
+        <p id="destinatie"></p>
+<script>
+    let sursa =document.getElementById('sursa').innerHTML;
+    let pattern = /(?:\s)(17)(?:\s)/mg;
+    let result = sursa.match(pattern);
+        document.getElementById("destinatie").innerHTML = result;
+</script>
+    </body>
+</html>

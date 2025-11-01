@@ -1,0 +1,42 @@
+{
+  "compilerOptions": {
+    /*  Setări generale */
+    "target": "es2020",                  // Versiunea JS în care compilează TypeScript
+    "module": "commonjs",                // Modul de export (bun pentru Node.js)
+    "rootDir": "./",                     // Directorul sursă
+    "outDir": "./dist",                  // Directorul de ieșire pentru fișierele compilate
+    "allowJs": true,                     // Permite compilarea fișierelor .js
+    "checkJs": false,                    // (opțional) Nu raportează erori în fișiere .js
+    "strict": true,                      // Activează toate regulile stricte
+    "esModuleInterop": true,             // Permite importuri default din module CommonJS
+    "forceConsistentCasingInFileNames": true, // Verifică consistența majusculelor în nume de fișiere
+    "skipLibCheck": true,                // Sare peste verificarea tipurilor din librării
+    "noEmitOnError": false,              // Generează fișiere chiar dacă există erori minore
+    "sourceMap": true,                   // Creează fișiere .map pentru debugging
+    "removeComments": false,             // Păstrează comentariile în fișierele compilate
+
+    /*  Interop & importuri */
+    "moduleResolution": "node10",        // Modul în care se caută modulele
+    "resolveJsonModule": true,           // Permite importarea fișierelor .json
+    "isolatedModules": true,             // Fiecare fișier este tratat izolat (bun pentru build)
+    "noImplicitAny": true,               // Nu permite variabile fără tip clar
+    "noUnusedLocals": false,             // Nu raportează variabile nefolosite
+    "noUnusedParameters": false,         // Nu raportează parametri nefolosiți
+    "alwaysStrict": true,                // Activează "use strict" automat
+
+    /*  Emit & generare fișiere */
+    "declaration": false,                // Nu generează fișiere .d.ts
+    "inlineSources": false,              // (opțional) Include sursa în .map
+    "newLine": "crlf",                   // Stilul liniei (Windows)
+    
+    /*  Alte opțiuni utile */
+    "allowSyntheticDefaultImports": true,
+    "downlevelIteration": true
+  },
+
+  /*  Ce fișiere să includă în proiect */
+  "include": ["./*/"],
+
+  /*  Ce fișiere / directoare să excludă */
+  "exclude": ["node_modules", "dist"]
+}

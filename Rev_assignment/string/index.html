@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz JSON Example</title>
+  <style>
+    body { font-family: Georgia, sans-serif; margin: 25px;font-size: 12px; color:#111;  }
+    h2 { margin-top: 20px; }
+    label { display: block; margin-left: 20px; }
+
+    </style>
+</head>
+<body>
+  <h1>Quiz din JSON</h1>
+<div id="questions"></div>
+  <script>
+    // JSON scris ca string
+    var json = `{
+      "quiz": {
+        "q1": {
+          "question": "Which one is correct team name in NBA?",
+          "options": [
+            "New York Bulls",
+            "Los Angeles Kings",
+            "Golden State Warriros",
+            "Huston Rocket"
+          ],
+          "answer": "Huston Rocket"
+        },
+        "q2": {
+          "question": "'Namaste' is a traditional greeting in which Asian language?",
+          "options": [
+            "Hindi",
+            "Mandarin",
+            "Nepalese",
+            "Thai"
+          ],
+          "answer": "Hindi"
+        },
+        "q3": {
+          "question": "The Spree river flows through which major European capital city?",
+          "options": [
+            "Berlin",
+            "Paris",
+            "Rome",
+            "London"
+          ],
+          "answer": "Berlin"
+        },
+        "q4": {
+            "question": "Which famous artist had both a 'Rose Period' and a 'Blue Period'?",
+            "options": [
+                "Pablo Picasso",
+                "Vincent van Gogh",
+                "Salvador Dalí",
+                "Edgar Degas"
+            ],
+            "answer": "Pablo Picasso"
+        }
+      }
+    }`;
+
+    // 1. Pars JSON în obiect JS
+    var data = JSON.parse(json);
+
+    // 2. întrebări
+    var questions = data.quiz;
+    var counter = 1;
+
+     // Randare quiz-ul pe pagină
+    function loadQuiz() {
+      var container = document.getElementById("questions");
+      container.innerHTML = ""; // goleste înainte de reîncărcare
+      var counter = 1;
+
+      for (var key in questions) {
+        if (questions.hasOwnProperty(key)) {
+          var q = questions[key];
+          var questionHTML = `<h2>Question ${counter}: ${q.question}</h2>`;
+
+          q.options.forEach(function(option, index) {
+            // Verificăm dacă există o selecție salvată în localStorage
+            var savedAnswer = localStorage.getItem("answer_" + key);
+            var checked = savedAnswer === option ? "checked" : "";
+
+            questionHTML += `
+              <label>
+                <input type="radio" name="${key}" value="${option}" ${checked}>
+                ${option}
+              </label>`;
+          });
+
+          container.innerHTML += questionHTML;
+          counter++;
+        }
+      }
+
+      // Adaugă event listener pentru salvare automată când utilizatorul selectează ceva
+      const allRadios = document.querySelectorAll('input[type="radio"]');
+      allRadios.forEach(radio => {
+        radio.addEventListener('change', function () {
+          const questionKey = this.name;
+          const selectedValue = this.value;
+          localStorage.setItem("answer_" + questionKey, selectedValue);
+        });
+      });
+    }
+    
+    // Încarcăm quiz-ul la pornire
+    loadQuiz();
+  </script>
+</body>
+</html
